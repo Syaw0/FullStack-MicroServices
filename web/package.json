@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": " vite",
+    "build": " tsc && vite build",
     "preview": "vite preview",
     "server": "ts-node -P ./tsconfig2.json ./server/index.ts",
     "devServer": "nodemon",

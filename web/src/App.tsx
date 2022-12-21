@@ -10,10 +10,8 @@ function App() {
   useEffect(() => {
     (async function () {
       const result = await getTodo();
-      console.log("s1");
       setTodos(result);
     })();
-    console.log("s2");
   }, []);
 
   const controlInput = (e: ChangeEvent) => {
@@ -37,7 +35,7 @@ function App() {
       </div>
       <div className="todo-holder">
         {todos.map((todo) => {
-          return <p>{todo.value}</p>;
+          return <p>{todo.name}</p>;
         })}
       </div>
     </div>
