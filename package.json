@@ -1,0 +1,16 @@
+{
+  "name": "fullstack-microservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@syaw0.github.com:Syaw0/FullStack-MicroServices.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
