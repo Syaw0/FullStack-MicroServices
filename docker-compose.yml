@@ -1,0 +1,56 @@
+version: "3"
+
+services:
+  mariadb:
+    image: public.ecr.aws/docker/library/mariadb
+    container_name: mariadb
+    stdin_open: true
+    restart: always
+    networks:
+      - net
+    ports:
+      - "3603:3603"
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - /home/siavash/Db:/var/lib/mysql
+
+  fronend:
+    image: b0d9016bb53e
+    depends_on:
+      - mariadb
+    container_name: myfrontendapi
+    networks:
+      - net
+    ports:
+      - "5173:80"
+
+  backend:
+    image: node-api:latest
+    container_name: mynodeapi
+    depends_on:
+      - mariadb
+    networks:
+      - net
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+
+  phpadmin:
+    depends_on:
+      - mariadb
+    image: public.ecr.aws/docker/library/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+    networks:
+      - net
+    ports:
+      - "8080:80"
+
+networks:
+  net:
+    driver: bridge

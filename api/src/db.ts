@@ -1,8 +1,9 @@
 import mariadb from "mariadb";
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASSWORD);
+
+const host =
+  process.env.DB_HOST == undefined ? "172.28.0.2" : process.env.DB_HOST;
 const pool = mariadb.createPool({
-  host: "172.28.0.2",
+  host,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: "todos",

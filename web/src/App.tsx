@@ -14,7 +14,7 @@ function App() {
     })();
   }, []);
 
-  const controlInput = (e: ChangeEvent) => {
+  const controlInput = (e: any) => {
     setInpValue(e.currentTarget.value);
   };
   const addTodo = async () => {
@@ -34,7 +34,7 @@ function App() {
         </button>
       </div>
       <div className="todo-holder">
-        {todos.map((todo) => {
+        {todos.map((todo: any) => {
           return <p>{todo.name}</p>;
         })}
       </div>
