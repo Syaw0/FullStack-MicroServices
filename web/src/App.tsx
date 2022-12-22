@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import getTodo from "./util/getTodo";
 import postTodo from "./util/postTodo";
@@ -26,7 +26,7 @@ function App() {
     setInpValue("");
   };
   return (
-    <div className="App">
+    <div data-testid="holder" className="App">
       <div style={{ display: "flex", flexDirection: "column" }}>
         <input className="inp" value={inpValue} onChange={controlInput}></input>
         <button className="btn" onClick={addTodo}>
