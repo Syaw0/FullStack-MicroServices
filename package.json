@@ -1,16 +1,22 @@
 {
   "name": "fullstack-microservices",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "simple explanation of how implement microservices in docker.",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git@syaw0.github.com:Syaw0/FullStack-MicroServices.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "microservices",
+    "docker",
+    "fullstack",
+    "react",
+    "nodejs",
+    "node",
+    "express",
+    "mariadb"
+  ],
+  "author": "syaw0",
   "license": "ISC"
 }

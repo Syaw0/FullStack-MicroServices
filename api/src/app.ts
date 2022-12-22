@@ -17,6 +17,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
 app.get("/", async (req, res) => {
   res.send(
     "hello dear if you see this message ,that`s mean api is working correctly"
@@ -24,20 +25,28 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/todos", async (req, res) => {
-  const con = await pool.getConnection();
-  const query = "SELECT * from todo";
-  const result = await con.query(query);
-  res.send(result);
+  try {
+    const con = await pool.getConnection();
+    const query = "SELECT * from todo";
+    const result = await con.query(query);
+    res.send(result);
+  } catch (err) {
+    res.send({ status: false, err });
+  }
 });
 
 app.post("/addTodo", async (req, res) => {
-  const { data } = req.body;
-  const con = await pool.getConnection();
-  const postQuery = `INSERT INTO todo(name) VALUES (?)`;
-  const getQuery = `SELECT * from todo`;
-  await con.query(postQuery, [data]);
-  const result = await con.query(getQuery, [data]);
-  res.send(result);
+  try {
+    const { data } = req.body;
+    const con = await pool.getConnection();
+    const postQuery = `INSERT INTO todo(name) VALUES (?)`;
+    const getQuery = `SELECT * from todo`;
+    await con.query(postQuery, [data]);
+    const result = await con.query(getQuery, [data]);
+    res.send(result);
+  } catch (err) {
+    res.send({ status: false, err });
+  }
 });
 
 const port = process.env.PORT;
